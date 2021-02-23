@@ -13,6 +13,9 @@ jobs:
    - checkout
    - setup_remote_docker
 
+   - snyk/install_snyk
+   - snyk/check_code_with_snyk   
+
    - run: 
       name: Setup environment
       command: |
@@ -29,8 +32,7 @@ jobs:
        EOF
    - run: mkdir -p "${GOPATH_BASE}"
    - run: mkdir -p "${GOPATH_HEAD}/bin"
-   - snyk/install_snyk
-   - snyk/check_code_with_snyk    
+ 
    - run:
       name: Testing application
       command: |
